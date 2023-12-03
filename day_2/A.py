@@ -1,17 +1,20 @@
-
 sum = 0
+maximum = {
+  "red": 12,
+  "green": 13,
+  "blue": 14
+}
 with open("day_2/input.txt",'r') as file:
   for i, line in enumerate(map(str.rstrip, file)):
-    maxi = {
-      "red": 0,
-      "green": 0,
-      "blue": 0
-    }
     data = line.split(": ")[1]
     possible = True
     for cubes in data.split("; "):
       for cube in cubes.split(", "):
         (amount, color) = cube.split(" ")
-        maxi[color] = max(maxi[color], int(amount))
-    sum += maxi["red"] * maxi["green"] * maxi["blue"]
+        if int(amount) > maximum[color]:
+          possible = False
+          break
+      if not possible: break
+    if possible:
+      sum += i+1
 print(sum)
