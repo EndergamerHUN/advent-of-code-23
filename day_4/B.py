@@ -12,7 +12,6 @@ with open("day_4/input.txt",'r') as file:
     games.append(matches)
 
 copies = [1 for i in range(len(games))]
-print(copies)
 
 def scratch(i:int):
   if i > len(games): return
